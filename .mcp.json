@@ -3,6 +3,24 @@
     "supabase": {
       "type": "http",
       "url": "https://mcp.supabase.com/mcp?project_ref=hbjjytsmhgsgbecthwky"
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": [
+        "shadcn@latest",
+        "mcp"
+      ]
+    },
+    "shrimp-task-manager": {
+      "command": "node",
+      "args": [
+        "/home/pro/Github4L/workspace/mcp-shrimp-task-manager/dist/index.js"
+      ],
+      "env": {
+        "DATA_DIR": "/home/pro/Github4L/workspace/nextjs-supabase-app/shrimp_data",
+        "TEMPLATES_USE": "en",
+        "ENABLE_GUI": "true"
+      }
     }
   }
 }
