@@ -18,13 +18,19 @@ npm run build
 # Start production server
 npm start
 
-# Lint code
-npm run lint
+# Code quality and formatting
+npm run lint                # ESLint check
+npm run lint:fix            # ESLint check + auto-fix
+npm run format              # Format all files with Prettier
+npm run format:check        # Check formatting without modifying files
+npm run type-check          # TypeScript type checking
+npm run type-check:watch    # Type checking in watch mode
 ```
 
 ## Environment Setup
 
 Required environment variables (copy from `.env.example` to `.env.local`):
+
 ```
 NEXT_PUBLIC_SUPABASE_URL=your-project-url
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-or-anon-key
@@ -39,19 +45,23 @@ This project uses `@supabase/ssr` for cookie-based authentication across the ent
 ### Three Supabase Client Patterns
 
 1. **Server Components & Route Handlers** (`lib/supabase/server.ts`):
+
    ```typescript
    import { createClient } from "@/lib/supabase/server";
    const supabase = await createClient();
    ```
+
    - Uses `createServerClient` from `@supabase/ssr`
    - Accesses cookies via `next/headers`
    - Handles cookie setting failures gracefully (Server Components can't set cookies, but proxy middleware handles session refresh)
 
 2. **Client Components** (`lib/supabase/client.ts`):
+
    ```typescript
    import { createClient } from "@/lib/supabase/client";
    const supabase = createClient();
    ```
+
    - Uses `createBrowserClient` from `@supabase/ssr`
    - For client-side operations in React components marked with `"use client"`
 
@@ -64,6 +74,7 @@ This project uses `@supabase/ssr` for cookie-based authentication across the ent
 ### Database Type Generation
 
 TypeScript types are auto-generated in `lib/supabase/database.types.ts`:
+
 - Currently defines `profiles` table schema
 - Export `Database`, `Tables<TableName>`, `TablesInsert<TableName>`, `TablesUpdate<TableName>` types
 - All Supabase clients are typed with `<Database>` generic for full type safety
@@ -96,6 +107,7 @@ lib/
 ## Path Aliases
 
 Configured in `tsconfig.json`:
+
 - `@/*` maps to project root
 - Import examples: `@/lib/supabase/server`, `@/components/ui/button`
 
@@ -117,6 +129,7 @@ Configured in `tsconfig.json`:
 ## MCP Server Configuration
 
 The project has `.mcp.json` configured with:
+
 - **Supabase MCP**: Direct HTTP connection to project (project_ref: hbjjytsmhgsgbecthwky)
 - **shadcn MCP**: For managing UI components
 - **shrimp-task-manager**: Task management tools
@@ -137,3 +150,38 @@ When working with Supabase schema or data, prefer using the Supabase MCP tools f
 - Style: "new-york"
 - Aliases configured for easy imports
 - To reinstall with different style: delete `components.json` and re-run `npx shadcn@latest init`
+
+## Code Quality Tools
+
+### ESLint Configuration
+
+- **File**: `eslint.config.mjs` (ESLint v9 flat config)
+- **Extends**: `next/core-web-vitals`, `next/typescript`, `prettier`
+- **AI-friendly rules**:
+  - `@typescript-eslint/no-unused-vars`: warn (allows `_` prefix for intentionally unused vars)
+  - `@typescript-eslint/no-explicit-any`: warn (not error)
+  - `react/no-unescaped-entities`: warn
+- **Ignored paths**: `.next/`, `out/`, `node_modules/`, `build/`
+
+### Prettier Configuration
+
+- **File**: `.prettierrc`
+- **Settings**: 2-space tabs, 100 char line width, semicolons, double quotes, LF line endings
+- **Plugins**: `prettier-plugin-tailwindcss` (auto-sorts Tailwind classes)
+- **Ignored**: `.prettierignore` excludes build artifacts and env files
+
+### Pre-commit Hooks (Husky + lint-staged)
+
+Git commits automatically run:
+
+1. Prettier formatting on changed files
+2. ESLint auto-fix on TypeScript files
+3. All checks must pass before commit succeeds
+
+Configuration in `package.json` under `lint-staged` key.
+
+### TypeScript
+
+- **Strict mode enabled** in `tsconfig.json`
+- Run `npm run type-check` before pushing to catch type errors
+- All Supabase clients use `<Database>` generic for type safety
