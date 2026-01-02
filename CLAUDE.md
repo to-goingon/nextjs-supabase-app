@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 15+ (App Router) starter kit integrated with Supabase for authentication and database operations. The project uses TypeScript, Tailwind CSS, and shadcn/ui components with the "new-york" style.
+This is a Next.js 16+ (App Router) starter kit integrated with Supabase for authentication and database operations. The project uses TypeScript, Tailwind CSS, and shadcn/ui components with the "new-york" style.
 
 ## Development Commands
 
