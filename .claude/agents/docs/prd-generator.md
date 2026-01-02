@@ -232,33 +232,44 @@ model: sonnet
 | [필드명] | [필드 설명] | → [연결모델].id |
 | [필드명] | [필드 설명] | [타입] |
 
-## 🛠️ 기술 스택 (최신 버전)
+## 🛠️ 기술 스택 (2026년 1월 기준)
 
 ### 🎨 프론트엔드 프레임워크
 
-- **Next.js 15** (App Router) - React 풀스택 프레임워크
-- **TypeScript 5.6+** - 타입 안전성 보장
-- **React 19** - UI 라이브러리 (최신 동시성 기능)
+- **Next.js 15+/16+** (App Router) - React 풀스택 프레임워크 (16.1+ 권장, Turbopack stable)
+- **TypeScript 5+** - 타입 안전성 보장 (5.9+ 권장)
+- **React 19** - UI 라이브러리 (최신 동시성 기능, 19.2+ 권장)
 
 ### 🎨 스타일링 & UI
 
-- **TailwindCSS v4** (설정파일 없는 새로운 엔진) - 유틸리티 CSS 프레임워크
-- **shadcn/ui** - 고품질 React 컴포넌트 라이브러리
+- **TailwindCSS v3.4+** - 유틸리티 CSS 프레임워크 (기본 권장, shadcn/ui 완벽 호환)
+  - 선택적: **TailwindCSS v4.1+** (최신, CSS 기반 설정, 성능 향상, shadcn/ui 호환 주의)
+- **shadcn/ui** - 고품질 Radix UI 기반 컴포넌트 라이브러리
 - **Lucide React** - 아이콘 라이브러리
+- **next-themes** - 다크 모드 지원
 
-### 📝 폼 & 검증
+### 📝 폼 & 검증 (선택적)
 
-- **React Hook Form 7.x** - 폼 상태 관리
+- **React Hook Form 7+** - 폼 상태 관리
 - **Zod** - 스키마 검증 라이브러리
 
 ### 🗄️ 백엔드 & 데이터베이스
 
 - **Supabase** - BaaS (인증, 데이터베이스, 실시간 구독)
+  - `@supabase/ssr` - SSR 인증
+  - `@supabase/supabase-js` - 클라이언트 SDK
 - **PostgreSQL** - 관계형 데이터베이스 (Supabase 포함)
 
 ### 🚀 배포 & 호스팅
 
-- **Vercel** - Next.js 15 최적화 배포 플랫폼
+- **Vercel** - Next.js 최적화 배포 플랫폼
+
+### 🔧 개발 도구
+
+- **ESLint 9+** - 코드 품질 검사
+- **Prettier 3+** - 코드 포맷팅
+- **Husky** - Git 훅 관리
+- **lint-staged** - 커밋 전 자동 검사
 
 ### 📦 패키지 관리
 
@@ -276,22 +287,28 @@ model: sonnet
 
 ## 🔧 기술 스택 선택 원칙
 
-- **최신 버전 필수**: Next.js 15, React 19, TailwindCSS v4 등 최신 버전 사용
-- **Next.js 15 기반**: 최신 App Router, 향상된 성능, React 19 지원
-- **TailwindCSS v4**: 설정 파일 없는 새로운 CSS 엔진 활용
+- **최신 안정 버전 권장**: Next.js 16+ (16.1+), React 19 (19.2+), TypeScript 5+ (5.9+)
+- **TailwindCSS**:
+  - **v3.4+**: 현재 많은 프로젝트에서 사용 중인 안정 버전 (기본 권장)
+  - **v4.1+**: 공식 권장 최신 버전 (CSS 기반 설정, 성능 향상)
+  - 선택 기준: 신규 프로젝트는 v4.1+, shadcn/ui 사용 시 v3.4+ 권장
+- **Next.js 16+**: Turbopack stable, App Router, React 19 지원, 성능 향상
 - **TypeScript**: 최신 타입 시스템으로 코드 안정성
-- **Supabase**: 백엔드 인프라 최소화, 실시간 기능
-- **학습 곡선이 낮고 문서화가 잘 된 최신 기술** 우선
+- **Supabase**: 백엔드 인프라 최소화, 실시간 기능, SSR 완벽 지원
+- **학습 곡선이 낮고 문서화가 잘 된 안정 버전** 우선
 - **커뮤니티가 활발하고 장기 지원되는 기술** 우선
 
 ## ⚠️ 중요 주의사항
 
 **기술 스택 작성 시 반드시**:
 
-- Next.js 15 (현재 최신버전)
-- React 19 (현재 최신버전)
-- TailwindCSS v4 (설정파일 없는 새로운 방식)
-- 각 기술의 최신 버전 확인 후 명시
+- **Next.js 16+** (2026년 1월 기준: 16.1.1, Turbopack stable)
+- **React 19.2+** (정식 안정 버전)
+- **TailwindCSS**:
+  - **v3.4+** (기본 권장, shadcn/ui 완벽 호환)
+  - **v4.1+** (2025.01.22 정식 출시, 공식 권장, shadcn/ui 사용 시 호환성 주의)
+- **TypeScript 5.9+** (최신 안정 버전)
+- 각 기술의 **안정 버전** 확인 후 명시 (latest 태그 확인)
 
 ## 🔄 처리 프로세스 (정합성 보장)
 
@@ -302,7 +319,7 @@ model: sonnet
 5. 메뉴 구조 설계 - 전체 내비게이션 체계 (기능 ID와 연결, URL 경로 제외)
 6. 페이지별 상세 기능 명세 - 구현 기능 ID 반드시 포함 (페이지 이름만 사용)
 7. 필요 데이터 모델 최소화
-8. **최신 버전의** Next.js 기반 기술 스택 적용
+8. **2026년 1월 기준 최신 안정 버전의** Next.js 기반 기술 스택 적용
 9. **정합성 검증 체크리스트 실행**
 10. 템플릿 형식으로 출력
 
