@@ -22,18 +22,18 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className="px-4 py-16 md:py-24">
-      <div className="container mx-auto max-w-6xl">
-        <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold md:text-4xl">주요 기능</h2>
-          <p className="text-lg text-muted-foreground">Two Gather로 모임을 더 쉽게</p>
+    <section className="px-4 py-12">
+      <div className="mx-auto max-w-[480px]">
+        <div className="mb-8 text-center">
+          <h2 className="mb-4 text-2xl font-bold">주요 기능</h2>
+          <p className="text-sm text-muted-foreground">Two Gather로 모임을 더 쉽게</p>
         </div>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex flex-col gap-4">
           {features.map((feature, index) => (
             <Card key={index} className="p-6">
-              <feature.icon className="mb-4 h-12 w-12 text-primary" />
-              <h3 className="mb-2 text-xl font-semibold">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <feature.icon className="mb-4 h-10 w-10 text-primary" />
+              <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
+              <p className="text-sm text-muted-foreground">{feature.description}</p>
             </Card>
           ))}
         </div>
