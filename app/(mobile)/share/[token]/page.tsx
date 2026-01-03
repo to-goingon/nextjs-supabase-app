@@ -1,7 +1,4 @@
-import { createClient } from "@/lib/supabase/server";
-
 export default async function SharedEventPage({ params }: { params: Promise<{ token: string }> }) {
-  const supabase = await createClient();
   const { token } = await params;
 
   return (

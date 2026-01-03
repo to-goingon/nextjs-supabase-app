@@ -76,28 +76,29 @@
   - ✅ 다크 모드 토글 컴포넌트 동작 확인
   - **기술 노트**: Next.js 16 설정에서 `cacheComponents: false` 적용 (동적 라우트 호환성 문제 해결)
 
-- **Task 004: 필수 npm 패키지 설치**
-  - `react-hook-form` 7+ (폼 상태 관리)
-  - `zod` (스키마 검증)
-  - `recharts` (차트 라이브러리)
-  - `@tanstack/react-table` 8+ (테이블 라이브러리)
-  - `sonner` 또는 `react-hot-toast` (Toast 알림)
-  - `date-fns` (날짜 포맷팅)
-  - package.json 업데이트 및 설치 확인
+- ✅ **Task 004: 필수 npm 패키지 설치**
+  - ✅ `react-hook-form` 7+ (폼 상태 관리) - v7.69.0
+  - ✅ `zod` (스키마 검증) - v3.25.76
+  - ✅ `recharts` (차트 라이브러리) - v2.15.4
+  - ✅ `@tanstack/react-table` 8+ (테이블 라이브러리) - v8.21.3
+  - ✅ `sonner` (Toast 알림) - v1.7.4
+  - ✅ `date-fns` (날짜 포맷팅) - v4.1.0
+  - ✅ package.json 확인 완료
 
-- **Task 005: shadcn/ui 추가 컴포넌트 설치**
-  - `dialog` (모달 대화상자)
-  - `toast` (알림 메시지)
-  - `select` (드롭다운 선택)
-  - `tabs` (탭 네비게이션)
-  - `table` (데이터 테이블)
-  - `textarea` (긴 텍스트 입력)
-  - `calendar` (날짜 선택)
-  - `skeleton` (로딩 UI)
-  - `alert` (경고 메시지)
-  - `avatar` (프로필 이미지)
-  - `separator` (구분선)
-  - `progress` (진행률 표시)
+- ✅ **Task 005: shadcn/ui 추가 컴포넌트 설치**
+  - ✅ `dialog` (모달 대화상자) - components/ui/dialog.tsx
+  - ✅ `toast` (알림 메시지) - components/ui/sonner.tsx
+  - ✅ `select` (드롭다운 선택) - components/ui/select.tsx
+  - ✅ `tabs` (탭 네비게이션) - components/ui/tabs.tsx
+  - ✅ `table` (데이터 테이블) - components/ui/table.tsx
+  - ✅ `textarea` (긴 텍스트 입력) - components/ui/textarea.tsx
+  - ✅ `calendar` (날짜 선택) - components/ui/calendar.tsx
+  - ✅ `skeleton` (로딩 UI) - components/ui/skeleton.tsx
+  - ✅ `alert` (경고 메시지) - components/ui/alert.tsx
+  - ✅ `avatar` (프로필 이미지) - components/ui/avatar.tsx
+  - ✅ `separator` (구분선) - components/ui/separator.tsx
+  - ✅ `progress` (진행률 표시) - components/ui/progress.tsx
+  - ✅ `popover` (팝오버, calendar 의존성) - components/ui/popover.tsx
 
 ### Phase 2: UI/UX 완성 (더미 데이터 활용)
 
@@ -632,6 +633,22 @@ graph TD
 
 ## 📝 로드맵 업데이트 이력
 
+**v1.3 (2026-01-03)**
+
+- **Phase 1 필수 의존성 설치 완료**
+- **완료된 작업**:
+  - Task 004: 필수 npm 패키지 설치 (react-hook-form, zod, recharts, @tanstack/react-table, sonner, date-fns)
+  - Task 005: shadcn/ui 추가 컴포넌트 설치 (dialog, toast, select, tabs, table, textarea, calendar, skeleton, alert, avatar, separator, progress, popover)
+- **설치된 패키지**:
+  - react-hook-form v7.69.0 (폼 상태 관리)
+  - zod v3.25.76 (스키마 검증)
+  - recharts v2.15.4 (차트 라이브러리)
+  - @tanstack/react-table v8.21.3 (테이블 라이브러리)
+  - sonner v1.7.4 (Toast 알림)
+  - date-fns v4.1.0 (날짜 포맷팅)
+- **설치된 shadcn/ui 컴포넌트**: 총 21개 컴포넌트 사용 가능
+- **검증**: TypeScript 컴파일 검증 완료 (type-check 통과)
+
 **v1.2 (2026-01-03)**
 
 - **모바일 우선 UI 아키텍처 구현 완료**
@@ -669,6 +686,6 @@ graph TD
 ---
 
 **작성일**: 2026-01-02
-**마지막 업데이트**: 2026-01-03 (v1.2)
+**마지막 업데이트**: 2026-01-03 (v1.3)
 **총 Task 수**: 36개
-**완료**: 3개 | **진행중**: 0개 | **대기**: 33개
+**완료**: 5개 | **진행중**: 0개 | **대기**: 31개
