@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Next.js 16+ (App Router) starter kit integrated with Supabase for authentication and database operations. The project uses TypeScript, Tailwind CSS, and shadcn/ui components with the "new-york" style.
+This is a Next.js 16+ (App Router) starter kit integrated with Supabase for authentication and database operations. The project uses TypeScript, TailwindCSS v4, and shadcn/ui components with the "new-york" style.
 
 ## Development Commands
 
@@ -85,7 +85,12 @@ TypeScript types are auto-generated in `lib/supabase/database.types.ts`:
 ```
 app/
 ├── auth/              # Authentication pages (login, sign-up, password reset, confirm callback)
+├── admin/             # Admin pages (dashboard, analytics, users, events)
 ├── protected/         # Protected pages requiring authentication
+├── events/            # Event-related pages ([id], [id]/edit, create)
+├── profile/           # User profile page
+├── notifications/     # Notifications page
+├── share/[token]      # Share page with token
 ├── layout.tsx         # Root layout with ThemeProvider
 └── page.tsx           # Public homepage
 
@@ -102,6 +107,11 @@ lib/
 │   ├── proxy.ts       # Middleware session handler
 │   └── database.types.ts  # Generated TypeScript types
 └── utils.ts           # Utility functions (cn for class merging)
+
+docs/
+└── guides/            # Development guides
+    ├── nextjs-16.md   # Next.js 16.1.1 development guide (Korean)
+    └── nextjs-supabase-fullstack-guide.md  # Full-stack guide (Korean)
 ```
 
 ## Path Aliases
@@ -111,13 +121,48 @@ Configured in `tsconfig.json`:
 - `@/*` maps to project root
 - Import examples: `@/lib/supabase/server`, `@/components/ui/button`
 
-## Styling
+## Styling with TailwindCSS v4
 
-- **Tailwind CSS** with `cssVariables: true` mode
+**IMPORTANT**: This project uses TailwindCSS v4.1.18, which has significant differences from v3:
+
+### Configuration
+
+- **No `tailwind.config.ts` file**: v4 uses CSS-based configuration instead of JavaScript
+- **PostCSS plugin**: Uses `@tailwindcss/postcss` instead of legacy `tailwindcss` plugin
+- **CSS imports**: In `app/globals.css`, styles are imported via `@import "tailwindcss"` instead of `@tailwind` directives
+- **Theme configuration**: Uses `@theme inline` directive in CSS for custom design tokens
+
+### Key Files
+
+- `app/globals.css`: Main CSS file with TailwindCSS imports and theme variables
+  - `@import "tailwindcss"` - Core TailwindCSS styles
+  - `@import "tw-animate-css"` - Animation utilities (replaces `tailwindcss-animate`)
+  - `:root` and `.dark` - CSS variables for light/dark themes
+  - `@theme inline` - Maps CSS variables to Tailwind design tokens
+- `postcss.config.mjs`: PostCSS configuration with `@tailwindcss/postcss` plugin
+- `components.json`: shadcn/ui configuration with `tailwind.config` set to empty string (v4 compatible)
+
+### Animation Package
+
+- Uses `tw-animate-css` (v1.4.0) instead of deprecated `tailwindcss-animate`
+- Pure CSS solution compatible with v4's architecture
+- Same utility classes as before (`animate-in`, `fade-in`, `zoom-in`, etc.)
+
+### shadcn/ui Integration
+
+- **Style**: "new-york" variant
 - **Base color**: neutral
-- **shadcn/ui**: "new-york" style variant with Lucide icons
+- **CSS Variables mode**: enabled (`cssVariables: true`)
+- **Icon library**: Lucide React
 - **Dark mode**: Managed by `next-themes` with system preference detection
-- Add new UI components: `npx shadcn@latest add <component-name>`
+- Add new components: `npx shadcn@latest add <component-name>`
+
+### Important Notes
+
+- Automatic content detection: All template files are discovered automatically (no `content` configuration needed)
+- Faster builds: v4 is up to 5x faster for full builds, 100x faster for incremental builds
+- Modern CSS features: Requires Safari 16.4+, Chrome 111+, Firefox 128+
+- No plugins in CSS: v4 uses pure CSS, not the JavaScript plugin system
 
 ## Authentication Flow
 
@@ -143,13 +188,6 @@ When working with Supabase schema or data, prefer using the Supabase MCP tools f
 - **Auth in Server Components**: Import from `@/lib/supabase/server` and await the client
 - **Never cache Supabase clients**: Always create fresh clients per request/function
 - **Cookie-based sessions**: User sessions work across Server Components, Client Components, Route Handlers, Server Actions, and Middleware
-
-## shadcn/ui Component Management
-
-- Configuration in `components.json`
-- Style: "new-york"
-- Aliases configured for easy imports
-- To reinstall with different style: delete `components.json` and re-run `npx shadcn@latest init`
 
 ## Code Quality Tools
 
@@ -186,7 +224,17 @@ Configuration in `package.json` under `lint-staged` key.
 - Run `npm run type-check` before pushing to catch type errors
 - All Supabase clients use `<Database>` generic for type safety
 
-## 개발 가이드
+## Development Guides (Korean)
 
-- @/docs/guides/nextjs-16.md : Next.js 16.1.1 개발 가이드
-- @/docs/guides/nextjs-supabase-fullstack-guide.md : Next.js 16.1.1 + Supabase 개발 가이드
+- `docs/guides/nextjs-16.md`: Comprehensive Next.js 16.1.1 development guide
+- `docs/guides/nextjs-supabase-fullstack-guide.md`: Full-stack development guide with Supabase integration
+
+These guides cover:
+
+- Server vs Client Components
+- Data fetching strategies
+- Caching and revalidation
+- Route Handlers (API Routes)
+- Error handling
+- Performance optimization
+- Security best practices

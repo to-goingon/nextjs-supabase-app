@@ -31,11 +31,17 @@ color: red
 
 ### 스타일링 접근법
 
-- Tailwind CSS v4 유틸리티 클래스만 사용
-- Shadcn UI의 new-york 스타일 테마 적용
-- 테마 일관성을 위한 CSS 변수 활용
-- 모바일 우선 반응형 디자인 준수
-- 프로젝트 관례에 대해 `@/docs/guides/styling-guide.md` 참조
+- **TailwindCSS v4 유틸리티 클래스만 사용**
+  - **중요**: v4는 `tailwind.config.ts` 파일을 사용하지 않음 (CSS 기반 설정)
+  - `app/globals.css`에서 `@import "tailwindcss"` 방식으로 임포트
+  - 커스텀 테마는 `@theme inline` 디렉티브로 CSS에서 직접 정의
+- **애니메이션**: `tw-animate-css` 패키지 사용 (v4 호환)
+  - 기존 `tailwindcss-animate`는 더 이상 사용하지 않음
+  - 동일한 유틸리티 클래스 사용 (`animate-in`, `fade-in`, `zoom-in` 등)
+- **shadcn/ui**: new-york 스타일 variant 적용
+- **CSS 변수**: 테마 일관성을 위해 적극 활용
+- **모바일 우선**: 반응형 디자인 필수
+- **프로젝트 가이드**: `@/docs/guides/styling-guide.md` 참조 (v4 최신 규칙 포함)
 
 ### 코드 표준
 
@@ -60,10 +66,16 @@ color: red
 1. resolve-library-id로 라이브러리 ID 확인
    예: "next.js", "tailwindcss", "radix-ui"
 
-2. get-library-docs로 최신 문서 가져오기
-   topic 파라미터로 특정 주제에 집중
-   예: topic="responsive design", topic="forms"
+2. query-docs로 최신 문서 가져오기
+   - TailwindCSS v4 관련 주제 조회 시:
+     query="TailwindCSS v4 [specific topic]"
+   - 예: "TailwindCSS v4 theme configuration"
+   - 예: topic="responsive design", topic="forms"
 ```
+
+**TailwindCSS v4 조회 시 주의사항:**
+- v3 문서와 혼동 방지: 명시적으로 "v4" 키워드 포함
+- @theme inline, CSS-based config 등 v4 특화 기능 확인
 
 **사용 워크플로우:**
 
@@ -432,6 +444,35 @@ Tailwind를 사용한 Next.js 레이아웃 패턴:
   <header className="border-b py-6">{/* 헤더 마크업 */}</header>
 </div>
 ```
+
+### 애니메이션 패턴 (tw-animate-css)
+
+TailwindCSS v4 호환 애니메이션 라이브러리 사용:
+
+```tsx
+// ✅ tw-animate-css 사용 (TailwindCSS v4 호환)
+<div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+  <Card>
+    <CardContent>등장 애니메이션이 적용된 카드</CardContent>
+  </Card>
+</div>
+
+// 종료 애니메이션
+<div className="animate-out fade-out slide-out-to-top-4">
+  {/* 사라지는 컨텐츠 */}
+</div>
+
+// 조건부 애니메이션
+<div className={cn(
+  "transition-all duration-300",
+  isVisible && "animate-in fade-in zoom-in",
+  !isVisible && "animate-out fade-out zoom-out"
+)}>
+  {/* 토글 가능한 컨텐츠 */}
+</div>
+```
+
+**참고**: `tw-animate-css`는 기존 `tailwindcss-animate`와 동일한 API를 제공하므로 사용법은 동일합니다.
 
 ## 🎯 중요 사항
 
