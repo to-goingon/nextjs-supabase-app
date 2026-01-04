@@ -26,14 +26,14 @@ export function FeaturesSection() {
       <div className="mx-auto max-w-[480px]">
         <div className="mb-8 text-center">
           <h2 className="mb-4 text-2xl font-bold">주요 기능</h2>
-          <p className="text-sm text-muted-foreground">Two Gather로 모임을 더 쉽게</p>
+          <p className="text-muted-foreground text-sm">Two Gather로 모임을 더 쉽게</p>
         </div>
         <div className="flex flex-col gap-4">
           {features.map((feature, index) => (
             <Card key={index} className="p-6">
-              <feature.icon className="mb-4 h-10 w-10 text-primary" />
+              <feature.icon className="text-primary mb-4 h-10 w-10" />
               <h3 className="mb-2 text-lg font-semibold">{feature.title}</h3>
-              <p className="text-sm text-muted-foreground">{feature.description}</p>
+              <p className="text-muted-foreground text-sm">{feature.description}</p>
             </Card>
           ))}
         </div>

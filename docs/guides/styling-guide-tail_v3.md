@@ -117,8 +117,8 @@ export default config;
 
 ```tsx
 // ✅ 올바른 Tailwind 클래스 사용
-<div className="flex items-center justify-between rounded-lg bg-background p-4 shadow-md">
-  <h2 className="text-lg font-semibold text-foreground">제목</h2>
+<div className="bg-background flex items-center justify-between rounded-lg p-4 shadow-md">
+  <h2 className="text-foreground text-lg font-semibold">제목</h2>
   <Button variant="outline" size="sm">
     버튼
   </Button>
@@ -147,7 +147,7 @@ Prettier 플러그인이 자동으로 정렬하지만, 수동 작성 시 다음 
     "text-center text-lg font-medium",
 
     // 4. 배경 및 테두리
-    "rounded-md border border-border bg-background",
+    "border-border bg-background rounded-md border",
 
     // 5. 효과 (shadow, opacity, transform)
     "opacity-90 shadow-lg hover:scale-105",
@@ -172,7 +172,7 @@ Prettier 플러그인이 자동으로 정렬하지만, 수동 작성 시 다음 
     "flex flex-col space-y-4 p-4",
 
     // 태블릿 (768px+)
-    "md:flex-row md:space-x-6 md:space-y-0 md:p-6",
+    "md:flex-row md:space-y-0 md:space-x-6 md:p-6",
 
     // 데스크톱 (1024px+)
     "lg:mx-auto lg:max-w-6xl lg:p-8",
@@ -190,7 +190,7 @@ Prettier 플러그인이 자동으로 정렬하지만, 수동 작성 시 다음 
 
 ```tsx
 // ✅ Tailwind 유틸리티 클래스 우선 사용
-<button className="rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"></button>;
+<button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-md px-4 py-2"></button>;
 
 // ❌ 커스텀 CSS 클래스 지양
 <button className="custom-button"></button>;
@@ -386,8 +386,8 @@ export function ThemeToggle() {
       size="icon"
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
     >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-4 w-4 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+      <Moon className="absolute h-4 w-4 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
       <span className="sr-only">테마 전환</span>
     </Button>
   );
@@ -611,7 +611,7 @@ shadcn/ui 컴포넌트는 Radix UI의 data-state 속성을 활용합니다:
     "flex flex-col space-y-4 p-4",
 
     // 태블릿 (768px+)
-    "md:flex-row md:space-x-6 md:space-y-0 md:p-6",
+    "md:flex-row md:space-y-0 md:space-x-6 md:p-6",
 
     // 데스크톱 (1024px+)
     "lg:mx-auto lg:max-w-6xl lg:p-8",
@@ -737,9 +737,9 @@ export function cn(...inputs: ClassValue[]) {
 <div
   className={cn([
     "flex items-center",
-    "rounded-md border border-border p-4",
+    "border-border rounded-md border p-4",
     "bg-background",
-    isHighlighted && "ring-2 ring-primary",
+    isHighlighted && "ring-primary ring-2",
   ])}
 ></div>;
 ```
@@ -901,7 +901,7 @@ export function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background">
+    <nav className="bg-background fixed right-0 bottom-0 left-0 z-50 border-t">
       <div className="mx-auto max-w-[480px]">
         <ul className="grid grid-cols-5 gap-1 px-2 py-1">
           {NAV_ITEMS.map((item) => {
@@ -912,7 +912,7 @@ export function BottomNav() {
                   href={item.href}
                   className={cn(
                     "flex flex-col items-center justify-center gap-1 rounded-lg py-2 transition-colors",
-                    isActive && "font-semibold text-primary",
+                    isActive && "text-primary font-semibold",
                     !isActive && "text-muted-foreground hover:text-foreground",
                     item.highlight && "text-primary"
                   )}
@@ -1135,7 +1135,7 @@ if (!mounted) {
 <div className="flex h-screen w-full items-center justify-center rounded-lg border-4 border-white bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-2xl font-bold text-white shadow-2xl"></div>;
 
 // 중복된 스타일 정의
-<div className="padding-4 p-4 pb-4 pl-4 pr-4 pt-4"></div>;
+<div className="padding-4 p-4 pt-4 pr-4 pb-4 pl-4"></div>;
 
 // !important 남용
 <div className="!bg-blue-500 !text-red-500"></div>;

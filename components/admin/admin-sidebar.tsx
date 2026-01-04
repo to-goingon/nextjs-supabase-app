@@ -17,11 +17,11 @@ export function AdminSidebar() {
   ];
 
   return (
-    <aside className="w-64 border-r bg-muted/10">
+    <aside className="bg-muted/10 w-64 border-r">
       <div className="flex h-full flex-col gap-2 p-4">
         <div className="mb-4 px-3 py-2">
           <h2 className="text-lg font-semibold tracking-tight">Admin Panel</h2>
-          <p className="text-xs text-muted-foreground">Platform Management</p>
+          <p className="text-muted-foreground text-xs">Platform Management</p>
         </div>
         <nav className="flex flex-col gap-1">
           {routes.map((route) => (

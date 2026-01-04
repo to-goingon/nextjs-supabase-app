@@ -29,7 +29,7 @@ export function BottomNav() {
   }
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t bg-background">
+    <nav className="bg-background fixed right-0 bottom-0 left-0 z-50 border-t">
       <div className="mx-auto max-w-[480px]">
         <ul className="grid grid-cols-5 gap-1 px-2 py-1">
           {NAV_ITEMS.map((item) => {
@@ -40,7 +40,7 @@ export function BottomNav() {
                   href={item.href}
                   className={cn(
                     "flex flex-col items-center justify-center gap-1 rounded-lg py-2 transition-colors",
-                    isActive && "font-semibold text-primary",
+                    isActive && "text-primary font-semibold",
                     !isActive && "text-muted-foreground hover:text-foreground",
                     item.highlight && "text-primary"
                   )}

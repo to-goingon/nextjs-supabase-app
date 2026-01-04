@@ -15,7 +15,7 @@ export default async function EventDetailsPage({ params }: { params: Promise<{ i
   return (
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold">Event Details</h1>
-      <p className="mt-2 text-muted-foreground">
+      <p className="text-muted-foreground mt-2">
         Event ID: {id}. Event details page. UI will be implemented in Phase 2.
       </p>
     </div>

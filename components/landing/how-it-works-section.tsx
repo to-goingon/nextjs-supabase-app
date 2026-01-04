@@ -29,7 +29,7 @@ export function HowItWorksSection() {
       <div className="container mx-auto max-w-4xl">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-3xl font-bold md:text-4xl">사용 방법</h2>
-          <p className="text-lg text-muted-foreground">3단계로 간편하게</p>
+          <p className="text-muted-foreground text-lg">3단계로 간편하게</p>
         </div>
         <div className="space-y-8">
           {steps.map((step, index) => (
@@ -39,7 +39,7 @@ export function HowItWorksSection() {
               </Badge>
               <div className="flex-1">
                 <div className="mb-2 flex items-center gap-2">
-                  <step.icon className="h-6 w-6 text-primary" />
+                  <step.icon className="text-primary h-6 w-6" />
                   <h3 className="text-xl font-semibold">{step.title}</h3>
                 </div>
                 <p className="text-muted-foreground">{step.description}</p>

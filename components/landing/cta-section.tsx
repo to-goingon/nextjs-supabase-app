@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function CTASection() {
   return (
-    <section className="bg-primary px-4 py-16 text-primary-foreground md:py-24">
+    <section className="bg-primary text-primary-foreground px-4 py-16 md:py-24">
       <div className="container mx-auto max-w-4xl text-center">
         <h2 className="mb-4 text-3xl font-bold md:text-4xl">지금 Two Gather를 시작하세요</h2>
         <p className="mb-8 text-lg opacity-90">무료로 시작하고 친구들과 함께 모이세요</p>

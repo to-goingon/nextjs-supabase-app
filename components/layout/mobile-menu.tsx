@@ -19,20 +19,20 @@ export function MobileMenu() {
         <div className="flex flex-col gap-4 p-4">
           <SheetTitle className="text-lg font-bold">Two Gather</SheetTitle>
           <nav className="flex flex-col gap-2">
-            <Link href="/dashboard" className="rounded-lg px-3 py-2 text-sm hover:bg-muted">
+            <Link href="/dashboard" className="hover:bg-muted rounded-lg px-3 py-2 text-sm">
               Dashboard
             </Link>
-            <Link href="/events/create" className="rounded-lg px-3 py-2 text-sm hover:bg-muted">
+            <Link href="/events/create" className="hover:bg-muted rounded-lg px-3 py-2 text-sm">
               Create Event
             </Link>
-            <Link href="/notifications" className="rounded-lg px-3 py-2 text-sm hover:bg-muted">
+            <Link href="/notifications" className="hover:bg-muted rounded-lg px-3 py-2 text-sm">
               Notifications
             </Link>
-            <Link href="/profile" className="rounded-lg px-3 py-2 text-sm hover:bg-muted">
+            <Link href="/profile" className="hover:bg-muted rounded-lg px-3 py-2 text-sm">
               Profile
             </Link>
           </nav>
-          <p className="mt-4 text-xs text-muted-foreground">
+          <p className="text-muted-foreground mt-4 text-xs">
             Mobile menu functionality will be enhanced in Phase 2
           </p>
         </div>
