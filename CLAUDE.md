@@ -2,9 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-> 📚 **개발자용 워크플로우 가이드**: 상세한 개발 워크플로우 및 디버깅 전략은
-> [Development Workflow Guide](docs/guides/nextjs-supabase-fullstack-guide.md)를 참조하세요.
-
 ## Project Overview
 
 This is a Next.js 16+ (App Router) starter kit integrated with Supabase for authentication and database operations. The project uses TypeScript, Tailwind CSS, and shadcn/ui components with the "new-york" style.
@@ -192,4 +189,4 @@ Configuration in `package.json` under `lint-staged` key.
 ## 개발 가이드
 
 - @/docs/guides/nextjs-16.md : Next.js 16.1.1 개발 가이드
--
+- @/docs/guides/nextjs-supabase-fullstack-guide.md : Next.js 16.1.1 + Supabase 개발 가이드
