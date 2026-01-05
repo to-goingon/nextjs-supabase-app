@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 // 이벤트 상태 타입 정의
-type EventStatus = "upcoming" | "ongoing" | "completed";
+type EventStatus = "upcoming" | "ongoing" | "completed" | "cancelled";
 
 // 이벤트 카드 Props 인터페이스
 interface EventCardProps {
@@ -23,11 +23,12 @@ interface EventCardProps {
 // 상태별 배지 스타일 매핑
 const statusConfig: Record<
   EventStatus,
-  { label: string; variant: "default" | "secondary" | "outline" }
+  { label: string; variant: "default" | "secondary" | "outline" | "destructive" }
 > = {
   upcoming: { label: "예정", variant: "default" },
   ongoing: { label: "진행중", variant: "secondary" },
   completed: { label: "완료", variant: "outline" },
+  cancelled: { label: "취소됨", variant: "destructive" },
 };
 
 export function EventCard({

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/lib/supabase/server";
+import { EventForm } from "@/components/events/event-form";
 
 export default async function CreateEventPage() {
   const supabase = await createClient();
@@ -11,11 +12,14 @@ export default async function CreateEventPage() {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold">Create Event</h1>
-      <p className="text-muted-foreground mt-2">
-        Event creation form. UI will be implemented in Phase 2.
-      </p>
+    <div className="space-y-6 p-4">
+      <header>
+        <h1 className="text-2xl font-bold">새 이벤트 만들기</h1>
+        <p className="text-muted-foreground mt-1 text-sm">
+          이벤트 정보를 입력하여 새로운 이벤트를 생성하세요
+        </p>
+      </header>
+      <EventForm mode="create" />
     </div>
   );
 }
